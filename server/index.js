@@ -5,6 +5,8 @@ const routes = require('./routes');
 
 routes(app);
 
+app.use('/', express.static(`${__dirname}/../client/build/`));
+
 app.listen(config.PORT, () =>
   console.log(`server started on port ${config.PORT}`)
 );
