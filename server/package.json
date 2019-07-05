@@ -1,8 +1,10 @@
 {
   "dependencies": {
     "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "jest-mock-axios": "^3.0.0"
+    "jest-mock-axios": "^3.0.0",
+    "pg": "^7.11.0"
   },
   "devDependencies": {
     "jest": "^24.8.0",
@@ -10,6 +12,7 @@
   },
   "scripts": {
     "start:dev": "nodemon index.js",
-    "test": "jest"
+    "test": "jest",
+    "initdb": "node ./stores/pg/dbinit.js"
   }
 }
