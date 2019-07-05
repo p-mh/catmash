@@ -9,7 +9,7 @@ const isThereSameNumber = array => {
   return !!Object.values(nbNumber).find(n => n >= 2);
 };
 
-const getRandomNumbers = (arrayLength, limit) => {
+const getRandomNumbers = (arrayLength, limit = 2) => {
   const result = new Array(Number(limit))
     .fill(null)
     .map(() => Math.floor(Math.random() * (arrayLength - 1)));
