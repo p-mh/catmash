@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/catmash
+    docker:
+      - image: circleci/node:10.15.1
+    steps:
+      - checkout
+      - run:
+          name: update-npm
+          command: 'cd server && sudo npm install -g npm@6'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-npm-wee
+          command: 'cd server && npm install'
+      - run:
+          name: test
+          command: 'cd server && npm test'
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:master
