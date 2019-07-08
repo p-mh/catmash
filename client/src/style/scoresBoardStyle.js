@@ -9,6 +9,13 @@ export const ScoresPageContainer = styled.div`
   background-color: #ffffff99;
 `;
 
+export const ScoreLoader = styled.div`
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const Scores = styled.div`
   width: 20%;
   height: calc(100% - 120px);

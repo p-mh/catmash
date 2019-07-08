@@ -4,6 +4,7 @@ import { getScores } from '../services/scores';
 
 import {
   ScoresPageContainer,
+  ScoreLoader,
   Scores,
   ScoreLine,
   ScorePicture,
@@ -57,9 +58,9 @@ export default class ScoresBoard extends Component {
         <Scores>
           {scoreHeader}
           {(isLoading && (
-            <div>
-              <i className="fas fa-spinner fa-spin" />
-            </div>
+            <ScoreLoader>
+              <i className="fas fa-paw fa-spin fa-2x" />
+            </ScoreLoader>
           )) ||
             showScores}
         </Scores>
