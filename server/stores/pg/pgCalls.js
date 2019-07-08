@@ -15,4 +15,13 @@ const updateScores = async (cat_id, isWin) => {
   }
 };
 
-module.exports = { updateScores };
+const getScores = async () => {
+  try {
+    const result = pool.query('SELECT * FROM scores');
+    return result;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+module.exports = { updateScores, getScores };
