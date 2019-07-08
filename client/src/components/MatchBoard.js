@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import { fetchTwoCats } from '../services/cats';
 import { updateScores } from '../services/scores';
 
-import { MatchContainer, MidScreenContainer } from '../style/matchBoardStyle';
+import {
+  MatchPageContainer,
+  MatchContainer,
+  Title,
+  MidScreenContainer,
+  ViewScores,
+  ScoresLink,
+  ScoresButton,
+} from '../style/matchBoardStyle';
 
 export default class MatchBoard extends Component {
   state = { isLoading: true, cats: [] };
@@ -25,6 +33,7 @@ export default class MatchBoard extends Component {
 
   render() {
     const { cats } = this.state;
+
     const catsContainers = cats.map(({ url, id }) => (
       <MidScreenContainer
         key={id}
@@ -32,6 +41,20 @@ export default class MatchBoard extends Component {
         onClick={this.vote.bind(null, id)}
       />
     ));
-    return <MatchContainer>{catsContainers}</MatchContainer>;
+
+    const ScoreButton = (
+      <ViewScores>
+        <ScoresLink to="/scores">
+          <ScoresButton>View scores</ScoresButton>
+        </ScoresLink>
+      </ViewScores>
+    );
+    return (
+      <MatchPageContainer>
+        <Title>Catmash</Title>
+        <MatchContainer>{catsContainers}</MatchContainer>
+        {ScoreButton}
+      </MatchPageContainer>
+    );
   }
 }
