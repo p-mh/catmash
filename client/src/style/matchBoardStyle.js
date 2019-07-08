@@ -6,6 +6,13 @@ export const MatchPageContainer = styled.div`
   justify-content: center;
 `;
 
+export const MatchLoader = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
 export const Title = styled.h1`
   font-family: 'Bubblegum Sans', cursive;
   font-size: 5rem;

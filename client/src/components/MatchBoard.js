@@ -4,6 +4,7 @@ import { updateScores } from '../services/scores';
 
 import {
   MatchPageContainer,
+  MatchLoader,
   MatchContainer,
   Title,
   MidScreenContainer,
@@ -32,7 +33,7 @@ export default class MatchBoard extends Component {
   };
 
   render() {
-    const { cats } = this.state;
+    const { cats, isLoading } = this.state;
 
     const catsContainers = cats.map(({ url, id }) => (
       <MidScreenContainer
@@ -52,7 +53,11 @@ export default class MatchBoard extends Component {
     return (
       <MatchPageContainer>
         <Title>Catmash</Title>
-        <MatchContainer>{catsContainers}</MatchContainer>
+        {(isLoading && (
+          <MatchLoader>
+            <i className="fas fa-paw fa-spin fa-3x" />
+          </MatchLoader>
+        )) || <MatchContainer>{catsContainers}</MatchContainer>}
         {ScoreButton}
       </MatchPageContainer>
     );
