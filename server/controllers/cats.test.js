@@ -38,13 +38,22 @@ describe('getCats', () => {
   });
 
   const sendSpy = jest.fn();
+  const statusSpy = jest.fn(function() {
+    return this;
+  });
 
   test('should called req.send (sendSpy)', async () => {
-    await getCats({ query: { limit: 2 } }, { send: sendSpy });
+    await getCats(
+      { query: { limit: 2 } },
+      { send: sendSpy, status: statusSpy }
+    );
     expect(sendSpy).toHaveBeenCalled();
   });
   test('should send (sendSpy) ["cat2", "cat"]', async () => {
-    await getCats({ query: { limit: 2 } }, { send: sendSpy });
+    await getCats(
+      { query: { limit: 2 } },
+      { send: sendSpy, status: statusSpy }
+    );
     expect(sendSpy).toHaveBeenCalledWith(['cat2', 'cat']);
   });
 });

@@ -15,6 +15,7 @@ const addCatScores = async (req, res) => {
     res.sendStatus(201);
   } catch (e) {
     console.log(e);
+    res.status(500);
   }
 };
 

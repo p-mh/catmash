@@ -27,9 +27,10 @@ const getCats = async (req, res) => {
     const randomCats = getRandomNumbers(allCats.length, limit).map(
       n => allCats[n]
     );
-    res.send(randomCats);
+    res.status(200).send(randomCats);
   } catch (error) {
     console.log(error);
+    res.status(500);
   }
 };
 
