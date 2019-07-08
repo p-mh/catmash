@@ -11,7 +11,7 @@ describe('addCatScores', () => {
 
     await Scores.addCatScores(
       { body: { catScores: [{ id: '1', isWin: true }] } },
-      { send: () => {} }
+      { sendStatus: () => {} }
     );
     expect(PgCalls.updateScores).toHaveBeenCalledWith('1', true);
   });
